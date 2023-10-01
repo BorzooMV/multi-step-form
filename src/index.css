@@ -6,15 +6,20 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
+  color-scheme: light;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  --primary: 243 90% 60%;
+  --outer-background: 216 88% 97%;
+  --text-dark: 216 56% 18%;
+  --text-light: 240 50% 96%;
+
+  background-color: hsl(var(--outer-background));
+  color: hsl(var(--text-dark));
 }
 
 body {
