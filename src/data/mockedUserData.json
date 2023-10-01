@@ -1,0 +1,12 @@
+{
+  "user": {
+    "name": "John Doe",
+    "email": "johndoe@gmail.com",
+    "phoneNumber": "+1123456789"
+  },
+  "plan": {
+    "product": "arcade",
+    "type": "annualy"
+  },
+  "addOnes": ["onlineService", "largerStorage"]
+}

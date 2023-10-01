@@ -1,0 +1,138 @@
+{
+  "regulars": [
+    {
+      "name": "arcade",
+      "type": "yearly",
+      "description": null,
+      "price": {
+        "actual": 90,
+        "discount": {
+          "inMonths": 2
+        },
+        "final": 800
+      }
+    },
+    {
+      "name": "advanced",
+      "type": "yearly",
+      "description": null,
+      "price": {
+        "actual": 120,
+        "discount": {
+          "inMonths": 2
+        },
+        "final": 800
+      }
+    },
+    {
+      "name": "pro",
+      "type": "yearly",
+      "description": null,
+      "price": {
+        "actual": 150,
+        "discount": {
+          "inMonths": 2
+        },
+        "final": 800
+      }
+    },
+    {
+      "name": "arcade",
+      "type": "monthly",
+      "description": null,
+      "price": {
+        "actual": 9,
+        "discount": null,
+        "final": 9
+      }
+    },
+    {
+      "name": "advanced",
+      "type": "monthly",
+      "description": null,
+      "price": {
+        "actual": 12,
+        "discount": null,
+        "final": 12
+      }
+    },
+    {
+      "name": "pro",
+      "type": "monthly",
+      "description": null,
+      "price": {
+        "actual": 15,
+        "discount": null,
+        "final": 15
+      }
+    }
+  ],
+  "addOnes": [
+    {
+      "name": "onlineService",
+      "title": "Online service",
+      "description": "Access to multiplayer games",
+      "type": "yearly",
+      "price": {
+        "actual": 10,
+        "discount": null,
+        "final": 10
+      }
+    },
+    {
+      "name": "largerStorage",
+      "title": "Larger storage",
+      "description": "Extra 1TB of cloud save",
+      "type": "yearly",
+      "price": {
+        "actual": 20,
+        "discount": null,
+        "final": 20
+      }
+    },
+    {
+      "name": "customizableProfile",
+      "title": "Customizable profile",
+      "description": "Custom theme on your profile",
+      "type": "yearly",
+      "price": {
+        "actual": 20,
+        "discount": null,
+        "final": 20
+      }
+    },
+    {
+      "name": "onlineService",
+      "title": "Online service",
+      "description": "Access to multiplayer games",
+      "type": "monthly",
+      "price": {
+        "actual": 1,
+        "discount": null,
+        "final": 1
+      }
+    },
+    {
+      "name": "largerStorage",
+      "title": "Larger storage",
+      "description": "Extra 1TB of cloud save",
+      "type": "monthly",
+      "price": {
+        "actual": 2,
+        "discount": null,
+        "final": 2
+      }
+    },
+    {
+      "name": "customizableProfile",
+      "title": "Customizable profile",
+      "description": "Custom theme on your profile",
+      "type": "monthly",
+      "price": {
+        "actual": 20,
+        "discount": null,
+        "final": 20
+      }
+    }
+  ]
+}
