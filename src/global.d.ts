@@ -1,9 +1,9 @@
 type RegularProductName = "arcade" | "advanced" | "pro";
-type AddOnesProductName =
+type AddOnsProductName =
   | "onlineService"
   | "largerStorage"
   | "customizableProfile";
-type ProductName = RegularProductName | AddOnesProductName;
+type ProductName = RegularProductName | AddOnsProductName;
 type ProductType = "yearly" | "monthly";
 type Discount = {
   inMounths?: number;
@@ -33,5 +33,5 @@ type Product = {
 type UserData = {
   user: UserInfo;
   plan: Plan;
-  addOnes: AddOnesProductName[];
+  addOns: AddOnsProductName[];
 };

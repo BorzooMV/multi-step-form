@@ -8,5 +8,5 @@
     "product": "arcade",
     "type": "annualy"
   },
-  "addOnes": ["onlineService", "largerStorage"]
+  "addOns": ["onlineService", "largerStorage"]
 }
