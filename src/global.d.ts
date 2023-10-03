@@ -35,3 +35,9 @@ type UserData = {
   plan: Plan;
   addOns: AddOnsProductName[];
 };
+
+type Step = {
+  title: string;
+  indicatorTitle: string;
+  description: string;
+};

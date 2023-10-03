@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Personal info",
+    "indicatorTitle": "Your Info",
+    "description": "Please provide your name, email address, and phone number."
+  },
+  {
+    "title": "Select your plan",
+    "indicatorTitle": "Select Plan",
+    "description": "You have the option of monthly or yearly billing."
+  },
+  {
+    "title": "Pick add-ons",
+    "indicatorTitle": "Add-Ons",
+    "description": "Add-ons help enhance your gaming experience."
+  },
+  {
+    "title": "Finishing up",
+    "indicatorTitle": "Summary",
+    "description": "Double-check everything looks OK before confirming."
+  }
+]
