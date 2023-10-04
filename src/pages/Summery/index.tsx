@@ -1,7 +1,6 @@
+import FormWrapper from "../../components/FormWrapper";
+import SummaryForm from "../../components/forms/SymmaryForm";
+
 export default function Summery() {
-  return (
-    <div>
-      <h1>Finishing up</h1>
-    </div>
-  );
+  return <FormWrapper formComponent={SummaryForm} />;
 }

@@ -2,21 +2,25 @@
   {
     "title": "Personal info",
     "indicatorTitle": "Your Info",
-    "description": "Please provide your name, email address, and phone number."
+    "description": "Please provide your name, email address, and phone number.",
+    "pathname": "/"
   },
   {
     "title": "Select your plan",
     "indicatorTitle": "Select Plan",
-    "description": "You have the option of monthly or yearly billing."
+    "description": "You have the option of monthly or yearly billing.",
+    "pathname": "/select-plan"
   },
   {
     "title": "Pick add-ons",
     "indicatorTitle": "Add-Ons",
-    "description": "Add-ons help enhance your gaming experience."
+    "description": "Add-ons help enhance your gaming experience.",
+    "pathname": "/select-addons"
   },
   {
     "title": "Finishing up",
     "indicatorTitle": "Summary",
-    "description": "Double-check everything looks OK before confirming."
+    "description": "Double-check everything looks OK before confirming.",
+    "pathname": "/summary"
   }
 ]

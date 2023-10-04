@@ -1,7 +1,7 @@
 import useGetStepsFromUrl from "../../hooks/useGetStepsFromUrl";
 import HeadAndSub from "../HeadAndSub";
 
-export default function PersonalInformationForm() {
+export default function SelectPlanForm() {
   const stepFromUrl = useGetStepsFromUrl();
   if (!stepFromUrl) return null;
 

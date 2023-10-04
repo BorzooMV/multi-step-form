@@ -1,7 +1,6 @@
+import FormWrapper from "../../components/FormWrapper";
+import SelectPlanForm from "../../components/forms/SelectPlanForm";
+
 export default function SelectPlan() {
-  return (
-    <div>
-      <h1>Select Plan</h1>
-    </div>
-  );
+  return <FormWrapper formComponent={SelectPlanForm} />;
 }

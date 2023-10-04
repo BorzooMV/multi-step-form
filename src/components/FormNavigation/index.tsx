@@ -1,16 +1,18 @@
 import { Button } from "antd";
+import useGetStepsFromUrl from "../../hooks/useGetStepsFromUrl";
 
 type FormNavigationProps = {
   step: number;
 };
 
 export default function FormNavigation({ step }: FormNavigationProps) {
+  const { goToNextStep, goToPreviousStep } = useGetStepsFromUrl();
   const isFirstStep = step === 0;
 
   return (
     <div>
-      {!isFirstStep && <Button>Go Back</Button>}
-      <Button className="float-right" type="primary">
+      {!isFirstStep && <Button onClick={goToPreviousStep}>Go Back</Button>}
+      <Button onClick={goToNextStep} className="float-right" type="primary">
         Next Step
       </Button>
     </div>

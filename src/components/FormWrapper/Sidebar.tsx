@@ -9,6 +9,7 @@ export default function Sidebar() {
         {stepsData.map((step, index) => {
           return (
             <StepIndicator
+              key={index}
               stepData={{
                 num: index + 1,
                 title: step.indicatorTitle.toUpperCase(),

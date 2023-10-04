@@ -1,7 +1,6 @@
+import FormWrapper from "../../components/FormWrapper";
+import PickAddOnsForm from "../../components/forms/PickAddOnsForm";
+
 export default function SelectAddOns() {
-  return (
-    <div>
-      <h1>Select add-ons</h1>
-    </div>
-  );
+  return <FormWrapper formComponent={PickAddOnsForm} />;
 }
