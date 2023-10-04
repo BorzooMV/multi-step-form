@@ -13,7 +13,7 @@ export default function Router() {
       <Route path="/" element={<Personal />} />
       <Route path="/select-plan" element={<SelectPlan />} />
       <Route path="/select-addons" element={<SelectAddOns />} />
-      <Route path="/summery" element={<Summery />} />
+      <Route path="/summary" element={<Summery />} />
       <Route path="/thank-you" element={<ThankYou />} />
       <Route path="*" element={<NotFound />} />
     </Routes>

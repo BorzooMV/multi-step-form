@@ -14,16 +14,13 @@ const pathnames = steps.reduce((pathnames: string[], currentStep) => {
 }, []);
 
 export default function useGetStepsFromUrl(): GetStepsFromUrlReturnValue {
-  const [currentStepNumber, setCurrentStepNumber] = useState(0);
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    setCurrentStepNumber(pathnames.findIndex((path) => path === pathname));
-  }, [pathname]);
+  const currentStepNumber = pathnames.findIndex((path) => path === pathname);
 
   function goToNextStep() {
-    if (currentStepNumber < steps.length) {
+    if (currentStepNumber < steps.length - 1) {
       navigate(steps[currentStepNumber + 1].pathname);
     }
   }
