@@ -55,7 +55,7 @@ export default function PersonalInformationForm() {
   const { currentStep, currentStepNumber } = stepFromUrl;
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 h-full">
       <HeadAndSub
         header={currentStep.title}
         subheader={currentStep.description}
