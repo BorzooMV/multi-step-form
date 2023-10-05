@@ -2,24 +2,26 @@ import { useFormik } from "formik";
 
 import useGetStepsFromUrl from "../../hooks/useGetStepsFromUrl";
 import HeadAndSub from "../HeadAndSub";
-import useWholeForm from "../../hooks/useWholeForm";
+import { useFormContext } from "../FormProvider";
 import FormNavigation from "../FormNavigation";
 
 import { Form, Input } from "antd";
 
 function TheForm({ step }: { step: number }) {
-  const { dispatch } = useWholeForm();
+  const { dispatch } = useFormContext();
+  const { goToNextStep } = useGetStepsFromUrl();
 
   const formik = useFormik({
     initialValues: {
-      product: "",
-      type: "",
+      product: "" as ProductName,
+      type: "" as ProductType,
     },
     onSubmit: (values) => {
       dispatch({
         type: "PLAN/UPDATE",
         payload: values,
       });
+      goToNextStep();
     },
   });
 

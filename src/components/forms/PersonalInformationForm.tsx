@@ -2,20 +2,20 @@ import { useFormik } from "formik";
 
 import useGetStepsFromUrl from "../../hooks/useGetStepsFromUrl";
 import HeadAndSub from "../HeadAndSub";
-import useWholeForm from "../../hooks/useWholeForm";
+import { useFormContext } from "../FormProvider";
 import FormNavigation from "../FormNavigation";
 
 import { Form, Input } from "antd";
 
 function TheForm({ step }: { step: number }) {
-  const { dispatch } = useWholeForm();
+  const { dispatch } = useFormContext();
   const { goToNextStep } = useGetStepsFromUrl();
 
   const formik = useFormik({
     initialValues: {
       name: "",
       email: "",
-      phone: "",
+      phoneNumber: "",
     },
     onSubmit: (values) => {
       dispatch({
@@ -39,7 +39,7 @@ function TheForm({ step }: { step: number }) {
         <Form.Item label="Email Address" name="email">
           <Input onChange={formik.handleChange} />
         </Form.Item>
-        <Form.Item label="Phone Number" name="phone">
+        <Form.Item label="Phone Number" name="phoneNumber">
           <Input onChange={formik.handleChange} />
         </Form.Item>
       </div>
