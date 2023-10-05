@@ -13,9 +13,9 @@ function TheForm({ step }: { step: number }) {
 
   const formik = useFormik({
     initialValues: {
-      personal_name: "",
-      personal_email: "",
-      personal_phone: "",
+      name: "",
+      email: "",
+      phone: "",
     },
     onSubmit: (values) => {
       dispatch({
@@ -29,7 +29,6 @@ function TheForm({ step }: { step: number }) {
   return (
     <Form
       className="flex flex-col justify-between h-full"
-      name="personal"
       layout="vertical"
       onSubmitCapture={formik.handleSubmit}
     >

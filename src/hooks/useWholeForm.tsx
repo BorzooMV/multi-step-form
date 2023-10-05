@@ -28,6 +28,9 @@ function reducer(state = initialUserData, action: ReducerAction) {
 
     case "ADDONS/UPDATE":
       return { ...state, addOns: action.payload };
+
+    default:
+      return state;
   }
 }
 
