@@ -14,6 +14,7 @@ type ReducerAction = {
 type ContextType = {
   state: UserData;
   dispatch: React.Dispatch<ReducerAction>;
+  isFormCompleted: () => boolean;
 };
 
 const FormContext = createContext<ContextType>({} as ContextType);
@@ -59,10 +60,19 @@ export default function FormProvider({ children }: PropsWithChildren) {
     reducer,
     initialUserData
   );
+
+  function isFormCompleted(): boolean {
+    const userValidity = !!Object.values(state.user).find((val) => !!val);
+    const planValidity = !!Object.values(state.plan).find((val) => !!val);
+    return userValidity && planValidity;
+  }
+
   const providerValue: ContextType = {
     state: state as UserData,
     dispatch,
+    isFormCompleted,
   };
+
   return (
     <FormContext.Provider value={providerValue}>
       {" "}
