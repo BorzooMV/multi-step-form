@@ -22,6 +22,7 @@ function TheForm({ step }: { step: number }) {
           .split(",")
           .map((item) => item.trim()) as AddOnsProductName[],
       });
+      goToNextStep();
     },
   });
 
