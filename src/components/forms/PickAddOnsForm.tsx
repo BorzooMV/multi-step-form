@@ -8,7 +8,7 @@ import FormNavigation from "../FormNavigation";
 import { Form, Input } from "antd";
 
 function TheForm({ step }: { step: number }) {
-  const { dispatch } = useFormContext();
+  const { dispatch, isFormCompleted } = useFormContext();
   const { goToNextStep } = useGetStepsFromUrl();
 
   const formik = useFormik({
@@ -22,7 +22,11 @@ function TheForm({ step }: { step: number }) {
           .split(",")
           .map((item) => item.trim()) as AddOnsProductName[],
       });
-      goToNextStep();
+      if (isFormCompleted()) {
+        goToNextStep();
+      } else {
+        alert("Some requiered fields need to be filled!");
+      }
     },
   });
 
