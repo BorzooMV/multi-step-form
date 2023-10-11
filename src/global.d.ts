@@ -3,7 +3,7 @@ type AddOnsProductName =
   | "onlineService"
   | "largerStorage"
   | "customizableProfile";
-type ProductName = RegularProductName | AddOnsProductName;
+type ProductName = RegularProductName | AddOnsProductName | string;
 type ProductType = "yearly" | "monthly";
 type Discount = {
   inMounths?: number;
@@ -19,17 +19,6 @@ type Plan = {
   type: ProductType;
 };
 
-type Product = {
-  name: ProductName;
-  type: ProductType;
-  description: string | null;
-  price: {
-    actual: number;
-    discount: Discount | null;
-    final: number;
-  };
-};
-
 type UserData = {
   user: UserInfo;
   plan: Plan;
@@ -41,3 +30,14 @@ type Step = {
   indicatorTitle: string;
   description: string;
 };
+
+interface Product {
+  name: ProductName;
+  type: ProductType;
+  description: string | null;
+  price: {
+    actual: number;
+    discount: Discount | null;
+    final: number;
+  };
+}
