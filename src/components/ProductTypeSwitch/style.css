@@ -1,0 +1,4 @@
+.ant-switch.product-type-switch:hover,
+.ant-switch.ant-switch-checked.product-type-switch:hover {
+  background: hsl(var(--primary) / 0.8);
+}

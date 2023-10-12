@@ -1,6 +1,8 @@
 import { Switch, Typography } from "antd";
 import { FormikErrors } from "formik";
 
+import "./style.css";
+
 const { Text } = Typography;
 
 type ProductTypeSwitchProps = {
@@ -31,11 +33,12 @@ export default function ProductTypeSwitch({
     }
   }
   return (
-    <div className="flex justify-center items-center gap-2">
+    <div className="flex justify-center items-center gap-2 bg-slate-100 py-2 rounded-md">
       <Text strong={currentProductType === "monthly"}>Monthly</Text>
       <Switch
-        className="bg-primary hover:bg-primary/80"
+        className="bg-primary product-type-switch"
         onChange={handleChange}
+        size="small"
       />
       <Text strong={currentProductType === "yearly"}>yearly</Text>
     </div>

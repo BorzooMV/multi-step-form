@@ -1,17 +1,19 @@
+import { Form } from "antd";
 import { useFormik } from "formik";
 
 import useGetStepsFromUrl from "../../hooks/useGetStepsFromUrl";
-import HeadAndSub from "../HeadAndSub";
 import { useFormContext } from "../FormProvider";
+
+import HeadAndSub from "../HeadAndSub";
 import FormNavigation from "../FormNavigation";
 import ProductCard from "../ProductCard";
-
-import { Form, Input } from "antd";
-import products from "../../data/products.json";
 import ProductTypeSwitch from "../ProductTypeSwitch/ProductTypeSwitch";
+
 import arcadeImage from "../../assets/icon-arcade.svg";
 import advancedImage from "../../assets/icon-advanced.svg";
 import proImage from "../../assets/icon-pro.svg";
+
+import products from "../../data/products.json";
 
 function TheForm({ step }: { step: number }) {
   const { dispatch } = useFormContext();
@@ -20,7 +22,7 @@ function TheForm({ step }: { step: number }) {
   const formik = useFormik({
     initialValues: {
       product: "",
-      type: "monthly" as ProductType,
+      type: "monthly",
     },
     onSubmit: (values) => {
       dispatch({
@@ -31,9 +33,10 @@ function TheForm({ step }: { step: number }) {
     },
   });
 
-  const desiredProducts: Product[] = products.regulars.filter(
+  const desiredProducts = products.regulars.filter(
     (product) => product.type === formik.values.type
-  );
+  ) as Product[];
+
   const desiredProductsWithImage = desiredProducts.map((product) => {
     switch (product.name) {
       case "arcade":
@@ -55,39 +58,23 @@ function TheForm({ step }: { step: number }) {
     >
       <div>
         <Form.Item label="Product" name="product">
-          {/* <Input onChange={formik.handleChange} /> */}
           <div className="flex gap-4">
-            {desiredProductsWithImage.map((product, index) => (
-              <ProductCard
-                key={index}
-                product={product}
-                handleChangeValue={formik.setFieldValue}
-              />
-            ))}
-            {/* <ProductCard
-              imgSrc={sampleProductImage}
-              type="monthly"
-              finalPrice={9}
-              productName="arcade"
-              onClick={() => formik.setFieldValue("product", "arcade")}
-            />
-            <ProductCard
-              imgSrc={sampleProductImage}
-              type="monthly"
-              finalPrice={9}
-              productName="arcade"
-            />
-            <ProductCard
-              imgSrc={sampleProductImage}
-              type="monthly"
-              finalPrice={9}
-              productName="arcade"
-            /> */}
+            {desiredProductsWithImage.map((product, index) => {
+              if (!product) return;
+
+              return (
+                <ProductCard
+                  key={index}
+                  product={product}
+                  handleChangeValue={formik.setFieldValue}
+                />
+              );
+            })}
           </div>
         </Form.Item>
         <Form.Item name="type">
           <ProductTypeSwitch
-            currentProductType={formik.values.type}
+            currentProductType={formik.values.type as ProductType}
             handleChangeValue={formik.setFieldValue}
           />
         </Form.Item>
