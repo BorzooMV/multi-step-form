@@ -6,9 +6,11 @@ import {
   useReducer,
 } from "react";
 
+import products from "../../data/products.json";
+
 type ReducerAction = {
   type: string;
-  payload: UserInfo | Plan | AddOnsProductName[];
+  payload: UserInfo | Product | AddOnProduct[];
 };
 
 type ContextType = {
@@ -25,29 +27,26 @@ const initialUserData = {
     email: "",
     phoneNumber: "",
   },
-  plan: {
-    product: "",
-    type: "",
-  },
+  plan: products.regulars[0],
   addOns: [],
 };
 
 function reducer(state = initialUserData, action: ReducerAction) {
   switch (action.type) {
     case "PERSONAL/UPDATE":
-      return { ...state, user: action.payload as UserInfo } as UserData;
+      return { ...state, user: action.payload as UserInfo };
 
     case "PLAN/UPDATE":
-      return { ...state, plan: action.payload as Plan } as UserData;
+      return { ...state, plan: action.payload as Product };
 
     case "ADDONS/UPDATE":
       return {
         ...state,
-        addOns: action.payload as AddOnsProductName[],
+        addOns: action.payload,
       } as UserData;
 
     default:
-      return state as UserData;
+      return state;
   }
 }
 

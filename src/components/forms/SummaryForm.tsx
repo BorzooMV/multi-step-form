@@ -3,14 +3,16 @@ import HeadAndSub from "../HeadAndSub";
 import { useFormContext } from "../FormProvider";
 import FormNavigation from "../FormNavigation";
 import { Divider, Typography } from "antd";
+import { convertToTitleCase, convertToUSDollars } from "../../utils";
 
 export default function SummaryForm() {
   const stepFromUrl = useGetStepsFromUrl();
   const { state } = useFormContext();
   const { Text } = Typography;
-  if (!stepFromUrl) return null;
 
   const { currentStep, currentStepNumber } = stepFromUrl;
+  const isProductMonthly = state.plan.type === "monthly";
+  const hasAddOns = state.addOns.length > 0;
 
   return (
     <div className="flex flex-col gap-4 h-full justify-between">
@@ -23,23 +25,29 @@ export default function SummaryForm() {
           <div className="flex justify-between items-center">
             <div className="flex flex-col">
               <Text className="text-sm font-bold text-primary">
-                Arcade (Yearly)
+                {`${convertToTitleCase(state.plan.name)} (${convertToTitleCase(
+                  state.plan.type
+                )})`}
               </Text>
               <Text className="text-xs text-gray-400 underline">Change</Text>
             </div>
             <Text className="text-xs text-primary font-bold">$90/yr</Text>
           </div>
-          <Divider className="my-4" />
-          <div className="flex flex-col">
-            <div className="flex justify-between">
-              <Text className="text-xs">online service</Text>
-              <Text className="text-xs">+$10/yr</Text>
-            </div>
-            <div className="flex justify-between">
-              <Text className="text-xs">online service</Text>
-              <Text className="text-xs">+$10/yr</Text>
-            </div>
-          </div>
+          {hasAddOns && (
+            <>
+              <Divider className="my-4" />
+              <div className="flex flex-col">
+                {state.addOns.map((addOn) => (
+                  <div key={addOn.name} className="flex justify-between">
+                    <Text className="text-xs">{addOn.title}</Text>
+                    <Text className="text-xs">
+                      {convertToUSDollars(addOn.price.final)}
+                    </Text>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
         </div>
         <div className="flex justify-between px-4">
           <Text className="text-xs">Total (per year)</Text>

@@ -15,8 +15,7 @@ type ProductCardProps = {
     | Promise<void>
     | Promise<
         FormikErrors<{
-          product: ProductName;
-          type: ProductType;
+          product: Product;
         }>
       >;
 };
@@ -28,7 +27,7 @@ export default function ProductCard({
   handleChangeValue,
 }: ProductCardProps) {
   function handleClick() {
-    handleChangeValue("product", product.name);
+    handleChangeValue("product", product);
   }
   return (
     <div

@@ -15,8 +15,7 @@ type ProductTypeSwitchProps = {
     | Promise<void>
     | Promise<
         FormikErrors<{
-          product: ProductName;
-          type: ProductType;
+          product: Product;
         }>
       >;
 };

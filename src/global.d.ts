@@ -19,15 +19,11 @@ type UserInfo = {
   email: string;
   phoneNumber: string | number;
 };
-type Plan = {
-  product: ProductName;
-  type: ProductType;
-};
 
 type UserData = {
   user: UserInfo;
-  plan: Plan;
-  addOns: AddOnsProductName[];
+  plan: Product;
+  addOns: AddOnProduct[];
 };
 
 type Step = {
@@ -41,4 +37,9 @@ interface Product {
   type: ProductType;
   description: string | null;
   price: Price;
+}
+
+interface AddOnProduct extends Product {
+  name: AddOnsProductName;
+  title: string;
 }

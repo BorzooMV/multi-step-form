@@ -34,17 +34,23 @@ function TheForm({ step }: { step: number }) {
 
   const addOns = products.addOns.filter(
     (addOn) => addOn.type === state.plan.type
-  );
+  ) as AddOnProduct[];
 
-  function handleCheck(value: string) {
-    const addOnValues = formik.values.addOns;
-    if (addOnValues.find((val) => val === value)) {
+  function handleCheck(product: AddOnProduct) {
+    const addOnProductValues = formik.values.addOns;
+    if (
+      addOnProductValues.find(
+        (addOn: AddOnProduct) => addOn.name === product.name
+      )
+    ) {
       formik.setFieldValue(
         "addOns",
-        addOnValues.filter((val) => val !== value)
+        addOnProductValues.filter(
+          (addOn: AddOnProduct) => addOn.name !== product.name
+        )
       );
     } else {
-      formik.setFieldValue("addOns", [...formik.values.addOns, value]);
+      formik.setFieldValue("addOns", [...formik.values.addOns, product]);
     }
   }
 
@@ -58,10 +64,7 @@ function TheForm({ step }: { step: number }) {
         {addOns.map((addOn) => (
           <AddonCard
             key={addOn.name}
-            value={addOn.name}
-            title={addOn.title}
-            description={addOn.description}
-            price={addOn.price}
+            addOn={addOn}
             handleOnCheck={handleCheck}
           />
         ))}

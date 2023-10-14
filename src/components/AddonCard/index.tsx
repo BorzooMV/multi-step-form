@@ -3,26 +3,19 @@ import { Typography } from "antd";
 import { useRef } from "react";
 
 type AddonCardProps = {
-  value: string;
-  title: string;
-  description: string;
-  price: Price;
+  addOn: AddOnProduct;
   handleOnCheck: any;
 };
 
-export default function AddonCard({
-  value,
-  title,
-  description,
-  price,
-  handleOnCheck,
-}: AddonCardProps) {
+export default function AddonCard({ addOn, handleOnCheck }: AddonCardProps) {
   const checkboxRef = useRef<any>();
+  const { title, description, price } = addOn;
   const { Text } = Typography;
+  const isMonthly = addOn.type === "monthly";
 
   function checkTheCheckbox() {
     checkboxRef.current.input.click();
-    handleOnCheck(value);
+    handleOnCheck(addOn);
   }
 
   return (
@@ -49,7 +42,7 @@ export default function AddonCard({
         <Text className="text-xs text-primary">{`${Intl.NumberFormat("en-US", {
           style: "currency",
           currency: "USD",
-        }).format(price.final)}/mo`}</Text>
+        }).format(price.final)}/${isMonthly ? "mo" : "yr"}`}</Text>
       </div>
     </div>
   );

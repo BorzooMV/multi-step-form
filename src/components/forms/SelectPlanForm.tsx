@@ -16,25 +16,24 @@ import proImage from "../../assets/icon-pro.svg";
 import products from "../../data/products.json";
 
 function TheForm({ step }: { step: number }) {
-  const { dispatch } = useFormContext();
+  const { state, dispatch } = useFormContext();
   const { goToNextStep } = useGetStepsFromUrl();
 
   const formik = useFormik({
     initialValues: {
-      product: "",
-      type: "monthly",
+      product: state.plan,
     },
     onSubmit: (values) => {
       dispatch({
         type: "PLAN/UPDATE",
-        payload: values as Plan,
+        payload: values.product,
       });
       goToNextStep();
     },
   });
 
   const desiredProducts = products.regulars.filter(
-    (product) => product.type === formik.values.type
+    (product) => product.type === formik.values.product.type
   ) as Product[];
 
   const desiredProductsWithImage = desiredProducts.map((product) => {
@@ -57,7 +56,7 @@ function TheForm({ step }: { step: number }) {
       onSubmitCapture={formik.handleSubmit}
     >
       <div>
-        <Form.Item label="Product" name="product">
+        <Form.Item>
           <div className="flex gap-4">
             {desiredProductsWithImage.map((product, index) => {
               if (!product) return;
@@ -72,9 +71,9 @@ function TheForm({ step }: { step: number }) {
             })}
           </div>
         </Form.Item>
-        <Form.Item name="type">
+        <Form.Item>
           <ProductTypeSwitch
-            currentProductType={formik.values.type as ProductType}
+            currentProductType={formik.values.product.type}
             handleChangeValue={formik.setFieldValue}
           />
         </Form.Item>
