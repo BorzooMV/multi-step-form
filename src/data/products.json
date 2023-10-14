@@ -129,9 +129,9 @@
       "description": "Custom theme on your profile",
       "type": "monthly",
       "price": {
-        "actual": 20,
+        "actual": 2,
         "discount": null,
-        "final": 20
+        "final": 2
       }
     }
   ]

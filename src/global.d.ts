@@ -9,6 +9,11 @@ type Discount = {
   inMounths?: number;
   inValue?: number;
 };
+type Price = {
+  actual: number;
+  discount: Discount | null;
+  final: number;
+};
 type UserInfo = {
   name: string;
   email: string;
@@ -35,9 +40,5 @@ interface Product {
   name: ProductName;
   type: ProductType;
   description: string | null;
-  price: {
-    actual: number;
-    discount: Discount | null;
-    final: number;
-  };
+  price: Price;
 }

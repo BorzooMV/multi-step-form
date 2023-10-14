@@ -1,26 +1,28 @@
 import { useFormik } from "formik";
 
 import useGetStepsFromUrl from "../../hooks/useGetStepsFromUrl";
-import HeadAndSub from "../HeadAndSub";
 import { useFormContext } from "../FormProvider";
-import FormNavigation from "../FormNavigation";
 
-import { Form, Input } from "antd";
+import FormNavigation from "../FormNavigation";
+import HeadAndSub from "../HeadAndSub";
+import AddonCard from "../AddonCard";
+
+import { Form } from "antd";
+
+import products from "../../data/products.json";
 
 function TheForm({ step }: { step: number }) {
-  const { dispatch, isFormCompleted } = useFormContext();
+  const { state, dispatch, isFormCompleted } = useFormContext();
   const { goToNextStep } = useGetStepsFromUrl();
 
   const formik = useFormik({
     initialValues: {
-      addOns: "",
+      addOns: [],
     },
     onSubmit: (values) => {
       dispatch({
         type: "ADDONS/UPDATE",
-        payload: values.addOns
-          .split(",")
-          .map((item) => item.trim()) as AddOnsProductName[],
+        payload: values.addOns,
       });
       if (isFormCompleted()) {
         goToNextStep();
@@ -30,16 +32,39 @@ function TheForm({ step }: { step: number }) {
     },
   });
 
+  const addOns = products.addOns.filter(
+    (addOn) => addOn.type === state.plan.type
+  );
+
+  function handleCheck(value: string) {
+    const addOnValues = formik.values.addOns;
+    if (addOnValues.find((val) => val === value)) {
+      formik.setFieldValue(
+        "addOns",
+        addOnValues.filter((val) => val !== value)
+      );
+    } else {
+      formik.setFieldValue("addOns", [...formik.values.addOns, value]);
+    }
+  }
+
   return (
     <Form
       className="flex flex-col justify-between h-full"
       layout="vertical"
       onSubmitCapture={formik.handleSubmit}
     >
-      <div>
-        <Form.Item label="Add Ons" name="addOns">
-          <Input onChange={formik.handleChange} />
-        </Form.Item>
+      <div className="flex flex-col gap-2">
+        {addOns.map((addOn) => (
+          <AddonCard
+            key={addOn.name}
+            value={addOn.name}
+            title={addOn.title}
+            description={addOn.description}
+            price={addOn.price}
+            handleOnCheck={handleCheck}
+          />
+        ))}
       </div>
       <FormNavigation step={step} />
     </Form>
