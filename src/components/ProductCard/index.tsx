@@ -1,5 +1,6 @@
 import { Typography } from "antd";
 import { FormikErrors } from "formik";
+import classNames from "classnames";
 import { convertToUSDollars } from "../../utils";
 
 interface ProductWithImage extends Product {
@@ -8,6 +9,7 @@ interface ProductWithImage extends Product {
 
 type ProductCardProps = {
   product: ProductWithImage;
+  isSelected?: boolean;
   handleChangeValue: (
     field: string,
     value: any,
@@ -21,12 +23,12 @@ type ProductCardProps = {
       >;
 };
 
-const { Text, Title } = Typography;
-
 export default function ProductCard({
   product,
+  isSelected,
   handleChangeValue,
 }: ProductCardProps) {
+  const { Text, Title } = Typography;
   const isMonthly = product.type === "monthly";
 
   function handleClick() {
@@ -35,7 +37,12 @@ export default function ProductCard({
   return (
     <div
       onClick={handleClick}
-      className="hover:bg-slate-100 flex flex-col p-4 cursor-pointer w-16 rounded-md border border-gray-300 border-solid"
+      className={classNames(
+        "hover:bg-slate-100 flex flex-col p-4 cursor-pointer w-16 rounded-md border border-gray-300 border-solid",
+        {
+          "border-primary": isSelected,
+        }
+      )}
     >
       <img width={20} src={product.imageSrc} alt={`${product.name} image`} />
       <Title className="!text-sm">{product.name}</Title>

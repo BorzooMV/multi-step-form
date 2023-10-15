@@ -65,6 +65,7 @@ function TheForm({ step }: { step: number }) {
                 <ProductCard
                   key={index}
                   product={product}
+                  isSelected={formik.values.product.name === product.name}
                   handleChangeValue={formik.setFieldValue}
                 />
               );
