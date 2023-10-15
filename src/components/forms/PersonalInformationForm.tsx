@@ -9,15 +9,11 @@ import FormNavigation from "../FormNavigation";
 import { Form, Input } from "antd";
 
 function TheForm({ step }: { step: number }) {
-  const { dispatch } = useFormContext();
+  const { state, dispatch } = useFormContext();
   const { goToNextStep } = useGetStepsFromUrl();
 
   const formik = useFormik({
-    initialValues: {
-      name: "",
-      email: "",
-      phoneNumber: "",
-    },
+    initialValues: state.user,
     validationSchema: Yup.object().shape({
       name: Yup.string().required("Name is required"),
       email: Yup.string().email().required("Email is required"),
@@ -42,6 +38,7 @@ function TheForm({ step }: { step: number }) {
       className="flex flex-col justify-between h-full"
       layout="vertical"
       onSubmitCapture={formik.handleSubmit}
+      initialValues={formik.initialValues}
     >
       <div>
         <Form.Item
