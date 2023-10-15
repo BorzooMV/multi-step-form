@@ -37,6 +37,7 @@ export default function ProductTypeSwitch({
       <Switch
         className="bg-primary product-type-switch"
         onChange={handleChange}
+        defaultChecked={currentProductType === "yearly"}
         size="small"
       />
       <Text strong={currentProductType === "yearly"}>yearly</Text>
