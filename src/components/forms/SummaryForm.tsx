@@ -73,7 +73,9 @@ export default function SummaryForm() {
           )}
         </div>
         <div className="flex justify-between px-4">
-          <Text className="text-xs">Total (per year)</Text>
+          <Text className="text-xs">{`Total (per ${
+            isProductMonthly ? "month" : "year"
+          })`}</Text>
           <Text className="text-md font-bold text-primary">
             {convertToUSDollars(
               calculateTotalPrice(state.addOns, state.plan),
