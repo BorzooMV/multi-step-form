@@ -17,7 +17,7 @@ function TheForm({ step }: { step: number }) {
 
   const formik = useFormik({
     initialValues: {
-      addOns: [],
+      addOns: state.addOns,
     },
     onSubmit: (values) => {
       dispatch({
@@ -67,6 +67,11 @@ function TheForm({ step }: { step: number }) {
             key={addOn.name}
             addOn={addOn}
             handleOnCheck={handleCheck}
+            defaultChecked={
+              !!formik.values.addOns.find(
+                (product) => product.name === addOn.name
+              )
+            }
           />
         ))}
       </div>

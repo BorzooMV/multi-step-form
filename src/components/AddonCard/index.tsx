@@ -5,10 +5,15 @@ import { Checkbox, Popover, Typography } from "antd";
 
 type AddonCardProps = {
   addOn: AddOnProduct;
+  defaultChecked: boolean;
   handleOnCheck: (product: AddOnProduct, checked: boolean) => void;
 };
 
-export default function AddonCard({ addOn, handleOnCheck }: AddonCardProps) {
+export default function AddonCard({
+  addOn,
+  handleOnCheck,
+  defaultChecked,
+}: AddonCardProps) {
   const checkboxRef = useRef<any>();
   const { title, description, price } = addOn;
   const { Text } = Typography;
@@ -29,6 +34,7 @@ export default function AddonCard({ addOn, handleOnCheck }: AddonCardProps) {
           ref={checkboxRef}
           onClick={checkTheCheckbox}
           name={`addon_${addOn.name}`}
+          defaultChecked={defaultChecked}
         />
         <div className="flex flex-col">
           <Text className="text-xs font-bold text-primary">{title}</Text>
