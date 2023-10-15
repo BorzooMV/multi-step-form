@@ -26,9 +26,9 @@ export default function ProductTypeSwitch({
 }: ProductTypeSwitchProps) {
   function handleChange(checked: boolean) {
     if (checked) {
-      handleChangeValue("type", "yearly");
+      handleChangeValue("product.type", "yearly");
     } else {
-      handleChangeValue("type", "monthly");
+      handleChangeValue("product.type", "monthly");
     }
   }
   return (

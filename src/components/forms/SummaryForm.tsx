@@ -1,9 +1,13 @@
+import { Link } from "react-router-dom";
+
 import useGetStepsFromUrl from "../../hooks/useGetStepsFromUrl";
-import HeadAndSub from "../HeadAndSub";
 import { useFormContext } from "../FormProvider";
-import FormNavigation from "../FormNavigation";
-import { Divider, Typography } from "antd";
 import { convertToTitleCase, convertToUSDollars } from "../../utils";
+
+import HeadAndSub from "../HeadAndSub";
+import FormNavigation from "../FormNavigation";
+
+import { Divider, Typography } from "antd";
 
 export default function SummaryForm() {
   const stepFromUrl = useGetStepsFromUrl();
@@ -13,6 +17,15 @@ export default function SummaryForm() {
   const { currentStep, currentStepNumber } = stepFromUrl;
   const isProductMonthly = state.plan.type === "monthly";
   const hasAddOns = state.addOns.length > 0;
+
+  function calculateTotalPrice(addOns: AddOnProduct[], plan: Product): number {
+    const totalAddOnsPrice = addOns.reduce(
+      (sum, currentAddOn) => sum + currentAddOn.price.final,
+      0
+    );
+
+    return totalAddOnsPrice + plan.price.final;
+  }
 
   return (
     <div className="flex flex-col gap-4 h-full justify-between">
@@ -29,9 +42,16 @@ export default function SummaryForm() {
                   state.plan.type
                 )})`}
               </Text>
-              <Text className="text-xs text-gray-400 underline">Change</Text>
+              <Link to="/select-plan">
+                <Text className="text-xs text-gray-400 underline">Change</Text>
+              </Link>
             </div>
-            <Text className="text-xs text-primary font-bold">$90/yr</Text>
+            <Text className="text-xs text-primary font-bold">
+              {convertToUSDollars(
+                state.plan.price.final,
+                isProductMonthly ? "mo" : "yr"
+              )}
+            </Text>
           </div>
           {hasAddOns && (
             <>
@@ -41,7 +61,10 @@ export default function SummaryForm() {
                   <div key={addOn.name} className="flex justify-between">
                     <Text className="text-xs">{addOn.title}</Text>
                     <Text className="text-xs">
-                      {convertToUSDollars(addOn.price.final)}
+                      {convertToUSDollars(
+                        addOn.price.final,
+                        isProductMonthly ? "mo" : "yr"
+                      )}
                     </Text>
                   </div>
                 ))}
@@ -51,7 +74,12 @@ export default function SummaryForm() {
         </div>
         <div className="flex justify-between px-4">
           <Text className="text-xs">Total (per year)</Text>
-          <Text className="text-md font-bold text-primary">+$10/yr</Text>
+          <Text className="text-md font-bold text-primary">
+            {convertToUSDollars(
+              calculateTotalPrice(state.addOns, state.plan),
+              isProductMonthly ? "mo" : "yr"
+            )}
+          </Text>
         </div>
       </div>
       <FormNavigation step={currentStepNumber} nextButtonLabel="Confirm" />

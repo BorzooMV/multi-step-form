@@ -1,6 +1,7 @@
-import { Checkbox, Popover } from "antd";
-import { Typography } from "antd";
 import { useRef } from "react";
+import { convertToUSDollars } from "../../utils";
+
+import { Checkbox, Popover, Typography } from "antd";
 
 type AddonCardProps = {
   addOn: AddOnProduct;
@@ -39,10 +40,9 @@ export default function AddonCard({ addOn, handleOnCheck }: AddonCardProps) {
         </div>
       </div>
       <div>
-        <Text className="text-xs text-primary">{`${Intl.NumberFormat("en-US", {
-          style: "currency",
-          currency: "USD",
-        }).format(price.final)}/${isMonthly ? "mo" : "yr"}`}</Text>
+        <Text className="text-xs text-primary">
+          {convertToUSDollars(price.final, isMonthly ? "mo" : "yr")}
+        </Text>
       </div>
     </div>
   );

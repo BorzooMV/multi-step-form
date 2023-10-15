@@ -1,5 +1,6 @@
 import { Typography } from "antd";
 import { FormikErrors } from "formik";
+import { convertToUSDollars } from "../../utils";
 
 interface ProductWithImage extends Product {
   imageSrc: string;
@@ -26,6 +27,8 @@ export default function ProductCard({
   product,
   handleChangeValue,
 }: ProductCardProps) {
+  const isMonthly = product.type === "monthly";
+
   function handleClick() {
     handleChangeValue("product", product);
   }
@@ -36,10 +39,9 @@ export default function ProductCard({
     >
       <img width={20} src={product.imageSrc} alt={`${product.name} image`} />
       <Title className="!text-sm">{product.name}</Title>
-      <Text className="!text-xs">{`${Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
-      }).format(product.price.final)}/mo`}</Text>
+      <Text className="!text-xs">
+        {convertToUSDollars(product.price.final, isMonthly ? "mo" : "yr")}
+      </Text>
     </div>
   );
 }
