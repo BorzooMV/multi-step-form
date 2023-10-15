@@ -36,21 +36,22 @@ function TheForm({ step }: { step: number }) {
     (addOn) => addOn.type === state.plan.type
   ) as AddOnProduct[];
 
-  function handleCheck(product: AddOnProduct) {
-    const addOnProductValues = formik.values.addOns;
-    if (
-      addOnProductValues.find(
-        (addOn: AddOnProduct) => addOn.name === product.name
-      )
-    ) {
-      formik.setFieldValue(
-        "addOns",
-        addOnProductValues.filter(
-          (addOn: AddOnProduct) => addOn.name !== product.name
-        )
-      );
+  function handleCheck(product: AddOnProduct, checked: boolean) {
+    const prevAddOns = formik.values.addOns;
+    const addOnExistedInState = prevAddOns.find(
+      (addOn: AddOnProduct) => addOn.name === product.name
+    );
+    if (checked) {
+      !addOnExistedInState &&
+        formik.setFieldValue("addOns", [...prevAddOns, product]);
     } else {
-      formik.setFieldValue("addOns", [...formik.values.addOns, product]);
+      addOnExistedInState &&
+        formik.setFieldValue(
+          "addOns",
+          formik.values.addOns.filter(
+            (addOn: AddOnProduct) => addOn.name !== product.name
+          )
+        );
     }
   }
 
