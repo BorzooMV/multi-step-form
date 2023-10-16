@@ -1,0 +1,18 @@
+.step-indicator__background {
+  position: relative;
+  background: hsl(var(--outer-background));
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+}
+
+.step-indicator__background--active {
+  background: #c27bff;
+}
+
+.step-indicator__number {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
