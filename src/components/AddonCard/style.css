@@ -1,0 +1,4 @@
+.ant-checkbox.ant-checkbox-checked .ant-checkbox-inner {
+  background-color: hsl(var(--purplish-blue));
+  border-color: hsl(var(--purplish-blue));
+}

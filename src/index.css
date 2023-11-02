@@ -13,13 +13,29 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 
-  --primary: 243 90% 60%;
+  /**********/
+  /* colors */
+  /**********/
+
+  /* primary */
+  --marine-blue: 213 96% 18%;
+  --purplish-blue: 243 100% 62%;
+  --pastel-blue: 228 100% 84%;
+  --light-blue: 206 94% 87%;
+  --strawberry-red: 354 84% 57%;
+
+  /* neutral */
+  --cool-gray: 231 11% 63%;
+  --light-gray: 229 24% 87%;
+  --magnolia: 217 100% 67%;
+  --alabaster: 231 100% 99%;
+  --white: 0 0% 100%;
+
+  /* other */
   --outer-background: 216 88% 97%;
-  --text-dark: 216 56% 18%;
-  --text-light: 240 50% 96%;
 
   background-color: hsl(var(--outer-background));
-  color: hsl(var(--text-dark));
+  color: hsl(var(--marine-blue));
 }
 
 body {

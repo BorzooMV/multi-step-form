@@ -8,7 +8,7 @@ export default function ThankYouComponent() {
     <div className="flex flex-col items-center justify-center h-full gap-4">
       <img className="w-20" src={thankYouIcon} alt="check icon" />
       <Title>Thank You</Title>
-      <Text>
+      <Text className="text-cool-gray">
         Thanks for confirming your subscription! We hope you have fun using our
         platform. If you ever need support, please feel free to email us at
         support@loremgaming.com.

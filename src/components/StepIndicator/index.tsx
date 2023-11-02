@@ -16,25 +16,17 @@ export default function StepIndicator({
 }: StepIndicatorProps) {
   const { Text } = Typography;
   return (
-    <div className="flex gap-4 items-center step-indicator">
-      <div
-        className={classNames("step-indicator__background", {
-          "step-indicator__background--active": isActive,
-        })}
-      >
+    <div
+      className={classNames("flex gap-4 items-center step-indicator", {
+        "step-indicator--active": isActive,
+      })}
+    >
+      <div className="step-indicator__background">
         <Text className="step-indicator__number">{num}</Text>
       </div>
       <div className="flex flex-col">
-        <Text
-          className={classNames("text-xs text-textLight", {
-            "text-textDark": isActive,
-          })}
-        >
-          Step {num}
-        </Text>
-        {title && (
-          <Text className="text-sm font-bold text-textLight">{title}</Text>
-        )}
+        <Text className="text-xs text-light-gray">Step {num}</Text>
+        {title && <Text className="text-sm font-bold text-white">{title}</Text>}
       </div>
     </div>
   );

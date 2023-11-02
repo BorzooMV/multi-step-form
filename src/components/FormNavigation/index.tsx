@@ -1,17 +1,20 @@
 import { Button } from "antd";
 import useGetStepsFromUrl from "../../hooks/useGetStepsFromUrl";
 import { useNavigate } from "react-router-dom";
+import { ButtonType } from "antd/es/button";
 
 type FormNavigationProps = {
   step: number;
   nextButtonLabel?: string;
   nextButtonHandler?: (event: React.MouseEvent) => void;
+  nextButtonType?: ButtonType;
 };
 
 export default function FormNavigation({
   step,
   nextButtonLabel,
   nextButtonHandler,
+  nextButtonType,
 }: FormNavigationProps) {
   const { goToPreviousStep, isLast } = useGetStepsFromUrl();
   const navigate = useNavigate();
@@ -19,7 +22,7 @@ export default function FormNavigation({
   const isFormSubmitButton = !isLast && !nextButtonHandler;
 
   function navigateToThankYouPage() {
-    navigate("/thank-you");
+    navigate("/thank-you", { replace: true });
   }
 
   return (
@@ -28,7 +31,7 @@ export default function FormNavigation({
       <Button
         htmlType={isFormSubmitButton ? "submit" : "button"}
         className="float-right"
-        type="primary"
+        type={nextButtonType || "primary"}
         onClick={
           isFormSubmitButton
             ? undefined

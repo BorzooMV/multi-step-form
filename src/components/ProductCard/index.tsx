@@ -1,7 +1,7 @@
 import { Typography } from "antd";
 import { FormikErrors } from "formik";
 import classNames from "classnames";
-import { convertToUSDollars } from "../../utils";
+import { convertToTitleCase, convertToUSDollars } from "../../utils";
 
 interface ProductWithImage extends Product {
   imageSrc: string;
@@ -28,7 +28,7 @@ export default function ProductCard({
   isSelected,
   handleChangeValue,
 }: ProductCardProps) {
-  const { Text, Title } = Typography;
+  const { Text } = Typography;
   const isMonthly = product.type === "monthly";
 
   function handleClick() {
@@ -38,15 +38,17 @@ export default function ProductCard({
     <div
       onClick={handleClick}
       className={classNames(
-        "hover:bg-slate-100 flex flex-col p-4 cursor-pointer w-16 rounded-md border border-gray-300 border-solid",
+        "hover:bg-cool-gray/10 flex flex-col p-4 cursor-pointer rounded-md border border-light-gray border-solid w-20",
         {
-          "border-primary": isSelected,
+          "border-purplish-blue": isSelected,
         }
       )}
     >
       <img width={20} src={product.imageSrc} alt={`${product.name} image`} />
-      <Title className="!text-sm">{product.name}</Title>
-      <Text className="!text-xs">
+      <Text className="text-sm text-marine-blue font-bold">
+        {convertToTitleCase(product.name)}
+      </Text>
+      <Text className="text-xs text-cool-gray">
         {convertToUSDollars(product.price.final, isMonthly ? "mo" : "yr")}
       </Text>
     </div>

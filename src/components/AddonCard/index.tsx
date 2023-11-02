@@ -1,6 +1,8 @@
 import { useRef } from "react";
 import { convertToUSDollars } from "../../utils";
 
+import "./style.css";
+
 import { Checkbox, Popover, Typography } from "antd";
 
 type AddonCardProps = {
@@ -27,7 +29,7 @@ export default function AddonCard({
   return (
     <div
       onClick={checkTheCheckbox}
-      className="flex justify-between items-center bg-primary/5 border border-solid border-primary/40 hover:border-primary rounded-md p-4 cursor-pointer"
+      className="flex justify-between items-center bg-purplish-blue/5 border border-solid border-light-gray hover:border-purplish-blue rounded-md p-4 cursor-pointer"
     >
       <div className="flex gap-2 items-center">
         <Checkbox
@@ -37,11 +39,11 @@ export default function AddonCard({
           defaultChecked={defaultChecked}
         />
         <div className="flex flex-col">
-          <Text className="text-xs font-bold text-primary">{title}</Text>
+          <Text className="text-xs font-bold text-marine-blue">{title}</Text>
           <Popover content={description}>
             <Text
               ellipsis
-              className="text-xs text-gray-500"
+              className="text-xs text-cool-gray"
               style={{ maxWidth: "9rem" }}
             >
               {description}
@@ -50,7 +52,7 @@ export default function AddonCard({
         </div>
       </div>
       <div>
-        <Text className="text-xs text-primary">
+        <Text className="text-xs text-purplish-blue">
           {convertToUSDollars(price.final, isMonthly ? "mo" : "yr")}
         </Text>
       </div>

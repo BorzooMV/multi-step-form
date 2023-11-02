@@ -10,10 +10,10 @@ type HeadAndSubProps = {
 export default function HeadAndSub({ header, subheader }: HeadAndSubProps) {
   return (
     <div className="flex flex-col">
-      <Title level={2} className="text-textDark mb-2">
+      <Title level={2} className="!text-marine-blue mb-2">
         {header}
       </Title>
-      <Text disabled>{subheader}</Text>
+      <Text className="text-cool-gray">{subheader}</Text>
     </div>
   );
 }

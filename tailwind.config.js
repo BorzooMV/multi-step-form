@@ -4,10 +4,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "hsl(var(--primary) / <alpha-value>)",
-        outerBackground: "hsl(var(--outer-background) / <alpha-value>)",
-        textDark: "hsl(var(--text-dark) / <alpha-value>)",
-        textLight: "hsl(var(--text-light) / <alpha-value>)",
+        "marine-blue": "hsl(var(--marine-blue) / <alpha-value>)",
+        "outer-background": "hsl(var(--outer-background) / <alpha-value>)",
+        "purplish-blue": "hsl(var(--purplish-blue) / <alpha-value>)",
+        "pastel-blue": "hsl(var(--pastel-blue) / <alpha-value>)",
+        "light-blue": "hsl(var(--light-blue) / <alpha-value>)",
+        "strawberry-red": "hsl(var(--strawberry-red) / <alpha-value>)",
+        "cool-gray": "hsl(var(--cool-gray) / <alpha-value>)",
+        "light-gray": "hsl(var(--light-gray) / <alpha-value>)",
+        magnolia: "hsl(var(--magnolia) / <alpha-value>)",
+        alabaster: "hsl(var(--alabaster) / <alpha-value>)",
+        white: "hsl(var(--white) / <alpha-value>)",
       },
     },
   },

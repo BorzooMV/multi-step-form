@@ -34,19 +34,19 @@ export default function SummaryForm() {
           header={currentStep.title}
           subheader={currentStep.description}
         />
-        <div className="flex flex-col bg-gray-100 rounded-md p-4 mb-4 mt-8">
+        <div className="flex flex-col bg-light-gray/30 rounded-md p-4 mb-4 mt-8">
           <div className="flex justify-between items-center">
             <div className="flex flex-col">
-              <Text className="text-sm font-bold text-primary">
+              <Text className="text-sm font-bold text-marine-blue">
                 {`${convertToTitleCase(state.plan.name)} (${convertToTitleCase(
                   state.plan.type
                 )})`}
               </Text>
               <Link to="/select-plan">
-                <Text className="text-xs text-gray-400 underline">Change</Text>
+                <Text className="text-xs text-cool-gray underline">Change</Text>
               </Link>
             </div>
-            <Text className="text-xs text-primary font-bold">
+            <Text className="text-xs text-marine-blue font-bold">
               {convertToUSDollars(
                 state.plan.price.final,
                 isProductMonthly ? "mo" : "yr"
@@ -60,7 +60,7 @@ export default function SummaryForm() {
                 {state.addOns.map((addOn) => (
                   <div key={addOn.name} className="flex justify-between">
                     <Text className="text-xs">{addOn.title}</Text>
-                    <Text className="text-xs">
+                    <Text className="text-xs text-marine-blue">
                       {convertToUSDollars(
                         addOn.price.final,
                         isProductMonthly ? "mo" : "yr"
@@ -76,7 +76,7 @@ export default function SummaryForm() {
           <Text className="text-xs">{`Total (per ${
             isProductMonthly ? "month" : "year"
           })`}</Text>
-          <Text className="text-md font-bold text-primary">
+          <Text className="text-md font-bold text-marine-blue">
             {convertToUSDollars(
               calculateTotalPrice(state.addOns, state.plan),
               isProductMonthly ? "mo" : "yr"

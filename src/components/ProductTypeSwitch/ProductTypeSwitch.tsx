@@ -1,5 +1,6 @@
-import { Switch, Typography } from "antd";
+import classNames from "classnames";
 import { FormikErrors } from "formik";
+import { Switch, Typography } from "antd";
 
 import "./style.css";
 
@@ -32,15 +33,27 @@ export default function ProductTypeSwitch({
     }
   }
   return (
-    <div className="flex justify-center items-center gap-2 bg-slate-100 py-2 rounded-md">
-      <Text strong={currentProductType === "monthly"}>Monthly</Text>
+    <div className="flex justify-center items-center gap-2 bg-cool-gray/10  py-2 rounded-md">
+      <Text
+        className={classNames("text-cool-gray", {
+          "text-marine-blue font-bold": currentProductType === "monthly",
+        })}
+      >
+        Monthly
+      </Text>
       <Switch
-        className="bg-primary product-type-switch"
+        className="bg-marine-blue product-type-switch"
         onChange={handleChange}
         defaultChecked={currentProductType === "yearly"}
         size="small"
       />
-      <Text strong={currentProductType === "yearly"}>yearly</Text>
+      <Text
+        className={classNames("text-cool-gray", {
+          "text-marine-blue font-bold": currentProductType === "yearly",
+        })}
+      >
+        Yearly
+      </Text>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 const theme = {
   token: {
-    colorPrimary: "#463df5",
+    colorPrimary: "hsl(213, 96%, 18%)",
+    colorSecondary: "hsl(243, 100%, 62%)",
   },
 };
 
